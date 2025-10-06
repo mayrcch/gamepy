@@ -1,5 +1,6 @@
+import random
 import sys
-from code.Const import C_WHITE, WIN_HEIGHT
+from code.Const import C_WHITE, EVENT_ENEMY, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from pygame import Surface, Rect
@@ -9,12 +10,22 @@ import pygame
 
 class Level:
     def __init__(self, window, name, game_mode):
-        self.timeout = 20000 # 20 sec
         self.window = window
         self.name = name
         self.game_mode = game_mode 
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg')) # pegando a lista de background em EntityFactory.py
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
+        self.timeout = 20000 # 20 sec
+        
+        # qnd for selecionado o modo cooperativo em 2:
+        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2')) # nave do player 2 aparece
+        # cada X tempo vem um inimigo
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME) 
+        
+        
+        
         
     def run(self):
         pygame.mixer_music.load(f'./asset/{self.name}.mp3')
@@ -31,6 +42,10 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(('Enemy1', 'Enemy2'))
+                    self.entity_list.append(EntityFactory.get_entity(choice)) # spawna inimigos 1 ou 2 aleatoriamente
+            
             
             # mostra o texto
             # tempo de duracao da fase
