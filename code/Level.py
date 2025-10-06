@@ -7,6 +7,8 @@ from pygame import Surface, Rect
 from pygame.font import Font
 import pygame
 
+from code.EntityMediator import EntityMediator
+
 
 class Level:
     def __init__(self, window, name, game_mode):
@@ -55,7 +57,11 @@ class Level:
             # mostra quantas entidades tem na tela
             self.level_text(text_size=14, text=f'entidades: {len(self.entity_list)}', text_color=C_WHITE, text_pos=(10, WIN_HEIGHT - 20))
             pygame.display.flip()
+            
+            EntityMediator.verify_collision(entity_list=self.entity_list) # verificando colisoes
+            EntityMediator.verify_health(entity_list=self.entity_list) # verificando a vida   
         pass
+    
     
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
