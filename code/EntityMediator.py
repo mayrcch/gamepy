@@ -1,5 +1,8 @@
+from code.Const import WIN_WIDTH
 from code.Enemy import Enemy
+from code.EnemyShot import EnemyShot
 from code.Entity import Entity
+from code.PlayerShot import PlayerShot
 
 
 class EntityMediator:
@@ -9,7 +12,14 @@ class EntityMediator:
         if isinstance(ent, Enemy): # verificação apenas para inimigos
             if ent.rect.right < 0: # se o enemy passar da tela
                 ent.health = 0 # a vida dele eh reduzida a 0
-        pass
+                
+        if isinstance(ent, PlayerShot): # verificação apenas para os tiros n passarem da tela
+            if ent.rect.left >= WIN_WIDTH: # se o tiro passar da tela
+                ent.health = 0
+                
+        if isinstance(ent, EnemyShot): # verificação apenas para inimigos
+            if ent.rect.right <= 0: # se o enemy passar da tela
+                ent.health = 0 # a vida dele eh reduzida a 0
         
         
     @staticmethod

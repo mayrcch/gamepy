@@ -1,11 +1,12 @@
 import pygame.key
-from code.Const import ENTITY_SPEED, WIN_HEIGHT, WIN_WIDTH, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_RIGHT, PLAYER_KEY_LEFT
+from code.Const import ENTITY_SHOT_DELAY, ENTITY_SPEED, PLAYER_KEY_SHOOT, WIN_HEIGHT, WIN_WIDTH, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_RIGHT, PLAYER_KEY_LEFT
 from code.Entity import Entity
+from code.PlayerShot import PlayerShot
 
 class Player(Entity):
     def __init__(self, name:str, position:tuple):
         super().__init__(name, position)
-        pass
+        self.shot_delay = ENTITY_SHOT_DELAY[self.name]
     
     # def update(self, ):
     #     pass
@@ -20,7 +21,14 @@ class Player(Entity):
             self.rect.centerx -= ENTITY_SPEED[self.name] # diminuindo o valor de Y ate bater na borda esquerda   
         if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH:
             self.rect.centerx += ENTITY_SPEED[self.name] # aumentando o valor de X ate bater na borda direita
-        
+        pass
         
         # tem que ser 'if', pois se for 'elif' não conseguiria apertar vários botões de uma vez só na movimentação.
-        pass
+       
+    def shoot(self): # tiro do player
+        self.shot_delay -= 1
+        if self.shot_delay == 0:
+            self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+            pressed_key = pygame.key.get_pressed() # ao pressionar a tecla de atirar
+            if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
+                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery)) # tiro sai do meio do player, da nave dele

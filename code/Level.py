@@ -1,6 +1,7 @@
 import random
 import sys
 from code.Const import C_WHITE, EVENT_ENEMY, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
+from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from pygame import Surface, Rect
@@ -8,6 +9,7 @@ from pygame.font import Font
 import pygame
 
 from code.EntityMediator import EntityMediator
+from code.Player import Player
 
 
 class Level:
@@ -40,6 +42,13 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect) # pegando cada imagem e fazendo um blit nela ( desenhando ela )
                 ent.move() # fazendo o background se mover e ela ficar redesenhando infinito = efeito paralax
+                
+                if isinstance(ent, (Player, Enemy)): # para apenas as entidades Player e Enemy que VAO atirar:
+                    shoot = ent.shoot()
+                    if shoot is not None: 
+                        self.entity_list.append(shoot)
+                    
+                        
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
