@@ -7,7 +7,7 @@ from code.Const import WIN_WIDTH, C_ORANGE, C_WHITE, C_YELLOW, MENU_OPTION
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load('./asset/MenuBg.png') #carrega a imagem
+        self.surf = pygame.image.load('./asset/MenuBg.png').convert_alpha() #carrega a imagem
         self.rect = self.surf.get_rect(left=0, top=0) # vai começar o retangulo no canto superior esquerdo
         
     def run(self, ):
