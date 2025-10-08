@@ -8,12 +8,16 @@ Mountain Shooter is a 2D arcade game developed with Pygame. The game has 2 level
 Can be played coop / comp local (2 players).
 Score is saved in database (SQLite3)
 
-Aula prática feita com o prof. Vinicious Pozzebon(@borinvini)
+Practical class w/ Vinicious Pozzebon(@borinvini).
 
 GAME MENU
 
-![Menu](https://github.com/user-attachments/assets/c9524f59-6ebd-443a-82c0-53b63eb2128f)
+![Menu](https://imgur.com/L3Pi60F.png)
 
 GAME LEVEL 1
 
-![Level1](https://github.com/user-attachments/assets/8af63514-178d-44c9-9eb0-299e0aee0933)
+![Level1](https://imgur.com/01snr5R.png)
+
+GAME LEVEL 2
+
+![Level2](https://imgur.com/yeUG8o8.png)
