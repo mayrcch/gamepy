@@ -2,3 +2,7 @@
 .env
 .venv
 venv
+
+# django stuff
+db.sqlite3
+db.sqlite3-journal

@@ -1,4 +1,4 @@
-from code.Const import ENTITY_SHOT_DELAY, ENTITY_SPEED, WIN_WIDTH
+from code.Const import ENTITY_SHOT_DELAY, ENTITY_SPEED
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
 
@@ -9,7 +9,7 @@ class Enemy(Entity):
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
         
         
-    def move(self, ):
+    def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]  #
     
     def shoot(self):

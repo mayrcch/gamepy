@@ -7,7 +7,7 @@ class Background(Entity):
         super().__init__(name, position) # super classe
         
         
-    def move(self, ):
+    def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]  # cada imagem vai se mover com sua respectiva velocidade de acordo com oq foi definido em Const.py
         if self.rect.right <= 0:
             self.rect.left = WIN_WIDTH

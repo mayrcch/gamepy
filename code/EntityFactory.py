@@ -8,7 +8,7 @@ from code.Player import Player
 class EntityFactory:
     
     @staticmethod
-    def get_entity(entity_name:str, position=(0,0)): # os background smp vao ser instanciados em esq0, top0
+    def get_entity(entity_name:str): # os background smp vao ser instanciados em esq0, top0
         match entity_name:
             case 'Level1Bg': # lvl 1
                 list_bg = [] # tds os backgrounds dentro dessa lista

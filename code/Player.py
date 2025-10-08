@@ -32,3 +32,8 @@ class Player(Entity):
             pressed_key = pygame.key.get_pressed() # ao pressionar a tecla de atirar
             if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
                 return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery)) # tiro sai do meio do player, da nave dele
+            else:
+                return None
+            
+        else:
+            return None

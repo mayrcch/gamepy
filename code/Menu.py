@@ -1,3 +1,4 @@
+import sys
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
@@ -10,7 +11,7 @@ class Menu:
         self.surf = pygame.image.load('./asset/MenuBg.png').convert_alpha() #carrega a imagem
         self.rect = self.surf.get_rect(left=0, top=0) # vai começar o retangulo no canto superior esquerdo
         
-    def run(self, ):
+    def run(self):
         menu_option = 0 # começando no 0, a cor amarela começará em 'new game' no menu
         pygame.mixer_music.load('./asset/Menu.mp3') # carrega o audio do menu
         pygame.mixer_music.play(-1) # musica toca, o -1 eh pra ela tocar infinitamente

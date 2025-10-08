@@ -1,4 +1,5 @@
 # fazer pull do projeto: do github para a maquina
+import sys
 import pygame
 from code.Level import Level
 from code.Menu import Menu
@@ -36,10 +37,11 @@ class Game:
                 score.show() # menu do score
                 
             elif menu_return == MENU_OPTION[4]: # saída
-                pygame.quit() # fecha a janela
-                quit() # end pygame
+                pygame.quit()
+                quit() 
             else:
-                pass
+                pygame.quit() 
+                sys.quit()
                 
                 
             
