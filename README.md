@@ -11,12 +11,12 @@ Score is saved in database (SQLite3)
 Practical class w/ Vinicius Borin(@borinvini).
 
 ### Keybinds:
-W/A/S/D - Move Player 1.
-Left Shift - Player 1 Shot.
-← ↑ → ↓ - Move Player 2.
-Right Shift - Player 2 Shot.
-Enter for Select.
-ESC for return to Main Menu in Score.
+- W/A/S/D - Move Player 1.
+- Left Shift - Player 1 Shot.
+- ← ↑ → ↓ - Move Player 2.
+- Right Shift - Player 2 Shot.
+- Enter for Select.
+- ESC for return to Main Menu in Score.
 
 
 ### GAME MENU
