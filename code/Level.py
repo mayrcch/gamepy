@@ -1,6 +1,6 @@
 import random
 import sys
-from code.Const import C_WHITE, EVENT_ENEMY, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
+from code.Const import C_CYAN, C_GREEN, C_WHITE, EVENT_ENEMY, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -47,7 +47,12 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None: 
                         self.entity_list.append(shoot)
+                if ent.name == 'Player1':
+                    self.level_text(text_size=14, text=f'Player1 - Health: {ent.health} | Score: {ent.score}', text_color=C_GREEN, text_pos=(10, 25))
+                if ent.name == 'Player2':
+                    self.level_text(text_size=14, text=f'Player2 - Health: {ent.health} | Score: {ent.score}', text_color=C_CYAN, text_pos=(10, 45))
                     
+                        
                         
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -56,7 +61,7 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice)) # spawna inimigos 1 ou 2 aleatoriamente
-            
+                
             
             # mostra o texto
             # tempo de duracao da fase
